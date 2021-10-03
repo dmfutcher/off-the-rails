@@ -1,7 +1,46 @@
+<!DOCTYPE HTML5>
 <html>
   <head>
+    <meta charset="utf-8"/>
+    <title>Off The Rails</title>
+    <script src="https://unpkg.com/vue@3.2.19/dist/vue.global.prod.js"></script>
   </head>
   <body>
-    <h1>Under construction...</h1>
+    <h1>🚂 Off The Rails</h1>
+    <div id="app">
+      <label for="URL">URL</label>
+      <input type="text" name="URL" id="URL" v-model="url"/>
+      <a v-if="result" v-bind:href="result">{{  result }}</a>
+      <button v-on:click="derail">Derail</button>
+    </div>
+    <script>
+        const API_URL = './.netlify/functions/derail';
+        const App = {
+            data() {
+              return {
+                  url: '',
+                  result: undefined,
+              }
+            },
+            methods: {
+              derail() {
+                  this.result = undefined;
+                  const request = new Request(API_URL, {
+                      method: 'POST',
+                      body: JSON.stringify({url: this.url}),
+                      headers: new Headers({
+                          'Content-Type': 'application/json',
+                      })
+                  });
+                  fetch(request)
+                    .then(res => res.json())
+                    .then(res => {
+                        this.result = res.url;
+                    });
+              }
+            }
+        };
+        Vue.createApp(App).mount('#app');
+    </script>
   </body>
 </html>
