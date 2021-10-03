@@ -1,0 +1,10 @@
+{
+  "name": "off-the-rails",
+  "version": "1.0.0",
+  "repository": "git@github.com:Train-Set-Software/off-the-rails.git",
+  "author": "Elliot Iddon <elliot@citrusbytes.net>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.22.0"
+  }
+}
