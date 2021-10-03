@@ -19,11 +19,23 @@ exports.handler = function (event, context, callback) {
   let url;
   try {
     url = JSON.parse(event.body).url;
-    if (!url) {
-      return { statusCode: 400, body: "url must be provided" };
+    if (!url || !(parse(url).protocol)) {
+      return callback(null, {
+        statusCode: 400,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({error: "url must be provided"}),
+      });
     }
   } catch (ex) {
-    return { statusCode: 400, body: "invalid/missing JSON body, url must be provided" };
+      return callback(null, {
+        statusCode: 400,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({error: "invalid/missing JSON body, url must be provided"}),
+      });
   }
 
   fetchRedirect(url).then(response => {
