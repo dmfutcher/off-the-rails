@@ -12,14 +12,16 @@
       <input type="text" name="URL" id="URL" v-model="url"/>
       <a v-if="result" v-bind:href="result">{{  result }}</a>
       <button v-on:click="derail">Derail</button>
+      <p v-if="error">{{ error }}</p>
     </div>
     <script>
-        const API_URL = './.netlify/functions/derail';
+        const API_URL = 'AAA./.netlify/functions/derail';
         const App = {
             data() {
               return {
                   url: '',
                   result: undefined,
+                  error: undefined,
               }
             },
             methods: {
@@ -36,7 +38,8 @@
                     .then(res => res.json())
                     .then(res => {
                         this.result = res.url;
-                    });
+                    })
+                    .catch(err => this.error = err);
               }
             }
         };
