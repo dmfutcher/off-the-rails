@@ -5,6 +5,7 @@
   "author": "Elliot Iddon <elliot@citrusbytes.net>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.22.0"
+    "axios": "^0.22.0",
+    "url-regex": "^5.0.0"
   }
 }

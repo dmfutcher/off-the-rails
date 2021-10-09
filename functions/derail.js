@@ -1,5 +1,6 @@
 const axios = require('axios');
 const {parse, format} = require('url');
+const urlRegex = require('url-regex');
 
 const stripQuery = (url) => {
   const parsed = parse(url, true);
@@ -7,7 +8,6 @@ const stripQuery = (url) => {
   parsed.query = undefined;
   return format(parsed);
 }
-
 
 const fetchRedirect = async (url) => {
   const stripped = stripQuery(url);
@@ -17,9 +17,11 @@ const fetchRedirect = async (url) => {
 
 exports.handler = function (event, context, callback) {
   let url;
+
   try {
-    url = JSON.parse(event.body).url;
-    if (!url || !(parse(url).protocol)) {
+    const input = JSON.parse(event.body).input;
+    const urls = input.match(urlRegex());
+    if (urls.length === 0) {
       return callback(null, {
         statusCode: 400,
         headers: {
@@ -28,7 +30,20 @@ exports.handler = function (event, context, callback) {
         body: JSON.stringify({error: "url must be provided"}),
       });
     }
-  } catch (ex) {
+
+    url = urls[0];
+    const parsedUrl = new URL(url);
+    if (!url || !parsedUrl.protocol) {
+      return callback(null, {
+        statusCode: 400,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({error: "url must be provided"}),
+      });
+    }
+  } catch (e) {
+      console.error(e);
       return callback(null, {
         statusCode: 400,
         headers: {
