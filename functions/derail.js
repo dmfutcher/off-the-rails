@@ -19,7 +19,7 @@ exports.handler = function (event, context, callback) {
   let url;
 
   try {
-    const input = JSON.parse(event.body).url;  // TODO: Should we change the key in the incoming json from `url` given it's not always a URL?
+    const input = JSON.parse(event.body).input;
     const urls = input.match(urlRegex());
     if (urls.length === 0) {
       return callback(null, {

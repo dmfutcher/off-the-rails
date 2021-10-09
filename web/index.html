@@ -27,7 +27,7 @@
                   this.result = undefined;
                   const request = new Request(API_URL, {
                       method: 'POST',
-                      body: JSON.stringify({url: this.url}),
+                      body: JSON.stringify({input: this.url}),
                       headers: new Headers({
                           'Content-Type': 'application/json',
                       })
