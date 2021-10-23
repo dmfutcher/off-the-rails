@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
+    justify-content: center;
+    height: 100%;
+}
+
+.title {
+    width: 100%;
+    color: #333;
+    text-align: center;
+    margin: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.25rem;
+    padding-top: 180px;
+}
+
+.title h1 {
+    margin-bottom: 5px;
+}
+
+#app {
+    padding: 0px 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    flex-shrink: 0;
+    margin: 10px 5px;
+    font-family: inherit;
+}
+
+.url-input {
+    flex-shrink: 1;
+    margin: 10px 5px;
+    padding: 5px;
+    width: 450px;
+    min-width: 180px;
+}
+
+button {
+    flex-shrink: 0;
+    margin: 10px 5px;
+    padding: 7px 15px;
+    background-color: rgb(175, 0, 0);
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid rgb(175, 0, 0);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: red;
+    border-color: red;
+}
+
+@media only screen and (max-width: 675px) {
+
+    .title {
+        padding-top: calc(min(28vw,180px));
+    }
+
+    #app {
+        flex-wrap: wrap;
+    }    
+
+    .url-label {
+        display: none;
+    }
+
+    .url-input {
+        margin: 10px 30px;
+        padding: 10px;
+        width: calc(100vw - 60px);
+    }
+    
+    button {
+        flex-grow: 1;
+        margin: 10px 30px;
+        padding: 14px 30px;
+    }
+
+}
