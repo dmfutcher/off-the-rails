@@ -71,6 +71,11 @@ button:hover {
     border-color: red;
 }
 
+.issue-link {
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 675px) {
 
     .title {
@@ -88,6 +93,10 @@ button:hover {
     .url-input {
         margin: 10px 30px;
         padding: 10px;
+        width: calc(100vw - 60px);
+    }
+
+    .issue-link {
         width: calc(100vw - 60px);
     }
     

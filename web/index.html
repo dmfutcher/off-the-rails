@@ -16,6 +16,7 @@
         <a v-if="result" v-bind:href="result">{{  result }}</a>
         <button v-on:click="derail">Derail</button>
         <p v-if="error">Sorry! {{ error }}</p>
+        <p class="issue-link">If a link doesn't work, please <a href="https://github.com/Train-Set-Software/off-the-rails/issues/new?&template=broken_link.yml&title=%5BBroken+Link%5D%3A+">raise an issue</a>.</p>
       </div>
     </div>
     <script>
