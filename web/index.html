@@ -11,12 +11,16 @@
     <div class="container">
       <div class="title"><h1>🚂 Off The Rails</h1></div>
       <div id="app">
-        <label class="url-label" for="URL">URL:</label>
-        <input class="url-input" type="text" name="URL" id="URL" v-model="url" placeholder="Enter URL..." />
-        <a v-if="result" v-bind:href="result">{{  result }}</a>
-        <button v-on:click="derail">Derail</button>
-        <p v-if="error">Sorry! {{ error }}</p>
-        <p class="issue-link">If a link doesn't work, please <a href="https://github.com/Train-Set-Software/off-the-rails/issues/new?&template=broken_link.yml&title=%5BBroken+Link%5D%3A+">raise an issue</a>.</p>
+        <div id="input-container">
+          <label class="url-label" for="URL">URL:</label>
+          <input class="url-input" type="text" name="URL" id="URL" v-model="url" placeholder="Enter URL..." />
+          <button v-on:click="derail">Derail</button>
+        </div>
+        <div id="result-container">
+          <a v-if="result" v-bind:href="result">{{  result }}</a>
+          <p v-if="error">Sorry! {{ error }}</p>
+          <p class="issue-link">If a link doesn't work, please <a href="https://github.com/Train-Set-Software/off-the-rails/issues/new?&template=broken_link.yml&title=%5BBroken+Link%5D%3A+">raise an issue</a>.</p>
+        </div>
       </div>
     </div>
     <script>
