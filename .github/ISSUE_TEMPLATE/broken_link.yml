@@ -1,0 +1,24 @@
+name: Broken Link
+description: Report a link which is broken after derailing
+title: "[Broken Link]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: Site
+    attributes:
+      label: Site
+      description: Domain which is not successfully derailed
+      placeholder: ex. youtube.com
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Please provide either a sample link or steps to obtain one.
+    validations:
+      required: true
